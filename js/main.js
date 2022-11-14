@@ -98,10 +98,9 @@ playerCardImages.playerCardTwoImage.classList.add('display-none')
         winner = 'losses'
     }
     scores[winner] += 1
-    // ADD IN COMPUTER CARDS
+    // ADD IN COMPUTER CARDS =================
 // Remove the two cards that are showing to display none
 compCardImages.compCardOneImage.classList.add('display-none')
-compCardImages.compCardTwoImage.classList.add('display-none')
 
     // Make them deal random cards from the deck and switch the images
     const compFirstCard = document.createElement('div')
@@ -109,49 +108,97 @@ compCardImages.compCardTwoImage.classList.add('display-none')
     compFirstCard.setAttribute('class', `card ${shuffledDeck[2].face}`)
     compCardImages.compCardThreeEl.appendChild(compFirstCard)
     // create card two and show it on the screen
-    const compSecondCard = document.createElement('div')
-    // give it styling whatever index 1 is card and then the face of it will be the class name
-    compSecondCard.setAttribute('class', `card ${shuffledDeck[3].face}`)
-    compCardImages.compCardFourEl.appendChild(compSecondCard)
+    // const compSecondCard = document.createElement('div')
+    // // give it styling whatever index 1 is card and then the face of it will be the class name
+    // compSecondCard.setAttribute('class', `card ${shuffledDeck[3].face}`)
+    // compCardImages.compCardFourEl.appendChild(compSecondCard)
 
     // Now need to add to the total for player cards
     cardTotals.computer += shuffledDeck[2].value
-    cardTotals.computer += shuffledDeck[3].value
+    
 
     // if they get 21 off bat winner is losses on scoreboard
     // add in computer wins later on the screen if I have time
-    if(cardTotals.computer === 21){
-        winner = 'losses'
-        scores[winner] += 1
-    } 
+
 
 
     render()
   }
+
 
   function playerHitCard(){
     // Add stuff to add to total of cards and display another card
     // Make them deal random cards from the deck and switch the images
     const playerThirdCard = document.createElement('div')
-    // give it styling
-    playerThirdCard.setAttribute('class', `card ${shuffledDeck[4].face}`)
+    // give it styling 
+    playerThirdCard.setAttribute('class', `card ${shuffledDeck[3].face}`)
     // Add it to the card section
     playerCardImages.playerCardThreeEl.appendChild(playerThirdCard)
 
-    cardTotals.player += shuffledDeck[4].value
+    cardTotals.player += shuffledDeck[3].value
+
+    // try creating a variable for next index
+    for (let i = 2; i < shuffledDeck.length; i++){
+        if (i === 2){
+
+            console.log(i)
+            console.log(shuffledDeck[i])
+        } else if (i === 3){
+            console.log(i)
+            console.log(shuffledDeck[i])
+        }
+    }
+
+
+    if(cardTotals.player > 21){
+        winner = 'losses'
+        console.log('YOU LOST BOZO')
+    }
+
+    if(cardTotals.player === 21){
+        winner = 'wins'
+        console.log('YOU WIN BLACKJACK')
+    }
+
+    scores[winner] += 1
 
     render()
   }
 
   function compHitCard(){
-
+    // Add in if statement if less than 17 draww more cards
   }
 
   function playerStandCard(){
+    if (cardTotals.computer <= 18 ){
+
+    compCardImages.compCardTwoImage.classList.add('display-none')
+
+    // Make them deal random cards from the deck and switch the images
+    const compSecondCard = document.createElement('div')
+    // give it styling aka class = what card shows
+    compSecondCard.setAttribute('class', `card ${shuffledDeck[].face}`)
+    compCardImages.compCardThreeEl.appendChild(compSecondCard)
+    // create card two and show it on the screen
+    // const compSecondCard = document.createElement('div')
+    // Now need to add to the total for player cards
+    cardTotals.computer += shuffledDeck[4].value
+    
+
+    // if they get 21 off bat winner is losses on scoreboard
+    // add in computer wins later on the screen if I have time
+
+
+
+    render()
+    }
     // Add something to disable hit button and allow computer to reveal cards
   }
 
   function compStandCard(){
+  }
+
+  function checkScores(){
 
   }
 
