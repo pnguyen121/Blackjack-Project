@@ -97,8 +97,6 @@ let wins;
 let draws;
 let losses;
 //  BOOLEANS to check things in the game
-let gameStart = false;
-let turnEnd = false;
 
 /*----- cached elements  -----*/
 // Selecting the Buttons from DOM
@@ -197,14 +195,11 @@ function dealCards() {
   // add in computer wins later on the screen if I have time
 
     if(cardTotals.player === 21){
-        console.log('YOU GOT 21')
-        winner = 'wins'
+        winnerMessage() //calls the winnerMessage function to check what to spit out
     } else if (cardTotals.player > 21){
-        console.log('You Busted')
-        winner = 'losses'
+        winnerMessage()
     }
 
-    scores[winner] +=1 
 
   render();
 }
@@ -224,8 +219,12 @@ function playerHitCard() {
 
   // Now need to add to the total for player cards
   cardTotals.player += removedCardThree.value;
-  
-winnerMessage()
+
+  if(cardTotals.player === 21){
+    winnerMessage()
+} else if (cardTotals.player > 21){
+    winnerMessage()
+}
 
   render();
 }
@@ -240,33 +239,66 @@ function winnerMessage(){
     } else if (cardTotals.player === cardTotals.computer){
         console.log('PUSH AKA DRAW')
         winner = 'draws'
-    } else {}
+    } else{
+        winner = 'losses'
+        console.log('Better Luck Next Time')
+    }
     scores[winner] += 1
     
     render()
 }
 
-function compHitCard() {
-  // Add in if statement if less than 17 draww more cards
+function newRound() {
+    // Get rid of card divs on screen
+  while(compCardImages.compCardThreeEl.hasChildNodes()){
+    compCardImages.compCardThreeEl.removeChild(compCardImages.compCardThreeEl.firstChild);
+  }
+  while(compCardImages.compCardFourEl.hasChildNodes()){
+    compCardImages.compCardFourEl.removeChild(compCardImages.compCardFourEl.firstChild);
+  }
+  while(playerCardImages.playerCardThreeEl.hasChildNodes()){
+    playerCardImages.playerCardThreeEl.removeChild(playerCardImages.playerCardThreeEl.firstChild);
+  }
+  while(playerCardImages.playerCardFourEl.hasChildNodes()){
+    playerCardImages.playerCardFourEl.removeChild(playerCardImages.playerCardFourEl.firstChild);
+  }
+
+//   Set the total scores back to 0
+cardTotals.player = 0
+cardTotals.computer = 0
+
+// NOW NEED TO FIGURE OUT WHERE CALL newRound function
+
+  render()
 }
 
 
 
 function playerStandCard() {
-      if(cardTotals.computer < 17){
-        removedCardFive = shuffledDeck.pop();
+      if(cardTotals.computer === 21){
+        winnerMessage()
+      } else if (cardTotals.computer > 17){
+        winnerMessage()
+      } else if (cardTotals.computer === 17) { 
+        winnerMessage()
+      }else {
+      removedCardFive = shuffledDeck.pop();
+      // Make them deal random cards from the deck and switch the images
+      const computerNewCard = document.createElement("div");
+      // give it styling aka class = what card shows
+      computerNewCard.setAttribute("class", `card ${removedCardFive.face}`);
+      compCardImages.compCardFourEl.appendChild(computerNewCard);
+      // Now need to add to the total for cards
+      cardTotals.computer += removedCardFive.value;
+    }
 
-  // Make them deal random cards from the deck and switch the images
-  const computerNewCard = document.createElement("div");
-  // give it styling aka class = what card shows
-  computerNewCard.setAttribute("class", `card ${removedCardFive.face}`);
-  compCardImages.compCardFourEl.appendChild(computerNewCard);
-  // Now need to add to the total for cards
-  cardTotals.computer += removedCardFive.value;
-  
-      } else if (cardTotals === 21)
-
-    
+    if(cardTotals.computer > 21){
+        winnerMessage()
+    } else if (cardTotals.computer < 17){
+        playerStandCard()
+    } else {
+        winnerMessage()
+    }
 }
 
 
