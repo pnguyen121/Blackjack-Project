@@ -76,20 +76,26 @@ const playerCardImages = {
 playerCardImages.playerCardOneImage.classList.add('display-none')
 playerCardImages.playerCardTwoImage.classList.add('display-none')
 
+// Take out cards that were played for player
+removedCardOne = shuffledDeck.pop()
+removedCardTwo = shuffledDeck.pop()
+
+    // Now need to add to the total for player cards
+    cardTotals.player += removedCardOne.value
+    cardTotals.player += removedCardTwo.value
+
     // Make them deal random cards from the deck and switch the images
     const playerFirstCard = document.createElement('div')
     // give it styling
-    playerFirstCard.setAttribute('class', `card ${shuffledDeck[0].face}`)
+    playerFirstCard.setAttribute('class', `card ${removedCardOne.face}`)
     playerCardImages.playerCardThreeEl.appendChild(playerFirstCard)
     // create card two and show it on the screen
     const playerSecondCard = document.createElement('div')
     // give it styling whatever index 1 is card and then the face of it will be the class name
-    playerSecondCard.setAttribute('class', `card ${shuffledDeck[1].face}`)
+    playerSecondCard.setAttribute('class', `card ${removedCardTwo.face}`)
     playerCardImages.playerCardFourEl.appendChild(playerSecondCard)
 
-    // Now need to add to the total for player cards
-    cardTotals.player += shuffledDeck[0].value
-    cardTotals.player += shuffledDeck[1].value
+
 
     // if they get 21 off bat winner is wins on scoreboard
     if(cardTotals.player === 21){
@@ -102,10 +108,13 @@ playerCardImages.playerCardTwoImage.classList.add('display-none')
 // Remove the two cards that are showing to display none
 compCardImages.compCardOneImage.classList.add('display-none')
 
+// Remove card drawn for comp
+removedCardThree = shuffledDeck.pop()
+
     // Make them deal random cards from the deck and switch the images
     const compFirstCard = document.createElement('div')
     // give it styling aka class = what card shows
-    compFirstCard.setAttribute('class', `card ${shuffledDeck[2].face}`)
+    compFirstCard.setAttribute('class', `card ${removedCardThree.face}`)
     compCardImages.compCardThreeEl.appendChild(compFirstCard)
     // create card two and show it on the screen
     // const compSecondCard = document.createElement('div')
@@ -114,7 +123,10 @@ compCardImages.compCardOneImage.classList.add('display-none')
     // compCardImages.compCardFourEl.appendChild(compSecondCard)
 
     // Now need to add to the total for player cards
-    cardTotals.computer += shuffledDeck[2].value
+    cardTotals.computer += removedCardThree.value
+
+    // remove the first index of the newest array because we already drew two cards from it
+    
     
 
     // if they get 21 off bat winner is losses on scoreboard
@@ -125,30 +137,18 @@ compCardImages.compCardOneImage.classList.add('display-none')
     render()
   }
 
-
   function playerHitCard(){
     // Add stuff to add to total of cards and display another card
     // Make them deal random cards from the deck and switch the images
     const playerThirdCard = document.createElement('div')
     // give it styling 
-    playerThirdCard.setAttribute('class', `card ${shuffledDeck[3].face}`)
+    playerThirdCard.setAttribute('class', `card ${shuffledDeck[48].face}`)
     // Add it to the card section
     playerCardImages.playerCardThreeEl.appendChild(playerThirdCard)
 
-    cardTotals.player += shuffledDeck[3].value
+    cardTotals.player += shuffledDeck[48].value
 
-    // try creating a variable for next index
-    for (let i = 2; i < shuffledDeck.length; i++){
-        if (i === 2){
-
-            console.log(i)
-            console.log(shuffledDeck[i])
-        } else if (i === 3){
-            console.log(i)
-            console.log(shuffledDeck[i])
-        }
-    }
-
+    shuffledDeck.pop()
 
     if(cardTotals.player > 21){
         winner = 'losses'
@@ -173,16 +173,20 @@ compCardImages.compCardOneImage.classList.add('display-none')
     if (cardTotals.computer <= 18 ){
 
     compCardImages.compCardTwoImage.classList.add('display-none')
-
+for (let i = 0; i < shuffledDeck.length; i++){
+    if (shuffledDeck[i] > 0 ){
     // Make them deal random cards from the deck and switch the images
     const compSecondCard = document.createElement('div')
     // give it styling aka class = what card shows
-    compSecondCard.setAttribute('class', `card ${shuffledDeck[].face}`)
+    compSecondCard.setAttribute('class', `card ${shuffledDeck[i].face}`)
     compCardImages.compCardThreeEl.appendChild(compSecondCard)
     // create card two and show it on the screen
     // const compSecondCard = document.createElement('div')
     // Now need to add to the total for player cards
-    cardTotals.computer += shuffledDeck[4].value
+    cardTotals.computer += shuffledDeck[i].value
+    console.log(i)
+    }
+}
     
 
     // if they get 21 off bat winner is losses on scoreboard
@@ -203,7 +207,7 @@ compCardImages.compCardOneImage.classList.add('display-none')
   }
 
   function randomCard(){
-    // Add stuff to get random cards 
+    // Add stuff to get random cards probably not needed
     const random = ranks[Math.floor(Math.random() * ranks.length)]
     console.log(random)
   }
