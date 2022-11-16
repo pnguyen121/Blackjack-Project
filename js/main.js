@@ -96,7 +96,8 @@ let winner;
 let wins;
 let draws;
 let losses;
-//  BOOLEANS to check things in the game
+let removedCardFour;
+let compSecondCard;
 
 /*----- cached elements  -----*/
 // Selecting the Buttons from DOM
@@ -132,8 +133,6 @@ const playerCardImages = {
 
 // Grabbing winner result section 
 const resultMessageEl = document.querySelector('#result-message')
-//     // Grab button section to add in the new buttons when game starts
-// const buttonSectionEl = document.querySelector('#button-section')
 
 /*----- event listeners -----*/
 betBtn.addEventListener("click", dealCards);
@@ -143,9 +142,6 @@ playAgainBtn.addEventListener("click", newRound);
 
 init(); // CALL INIT FUNCTION
 
-// Testing setting a var outside function
-let removedCardFour;
-let compSecondCard;
 
 /*----- functions -----*/
 
