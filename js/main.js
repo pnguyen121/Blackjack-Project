@@ -103,6 +103,7 @@ let losses;
 const hitBtn = document.querySelector("#hit-btn");
 const betBtn = document.querySelector("#bet-btn");
 const standBtn = document.querySelector("#stand-btn");
+const playAgainBtn = document.querySelector("#playagain-btn");
 // Selecting Scores from DOM
 const winScoreEl = document.querySelector("#wins-scores");
 const lossScoreEl = document.querySelector("#loss-scores");
@@ -128,6 +129,9 @@ const playerCardImages = {
   playerCardThreeEl: document.querySelector("#playercard-3"),
   playerCardFourEl: document.querySelector("#playercard-4"),
 };
+
+// Grabbing winner result section 
+const resultMessageEl = document.querySelector('#result-message')
 //     // Grab button section to add in the new buttons when game starts
 // const buttonSectionEl = document.querySelector('#button-section')
 
@@ -135,8 +139,14 @@ const playerCardImages = {
 betBtn.addEventListener("click", dealCards);
 hitBtn.addEventListener("click", playerHitCard);
 standBtn.addEventListener("click", playerStandCard);
+playAgainBtn.addEventListener("click", newRound);
 
 init(); // CALL INIT FUNCTION
+
+// Testing setting a var outside function
+let removedCardFour;
+let compSecondCard;
+
 /*----- functions -----*/
 
 function dealCards() {
@@ -172,34 +182,38 @@ function dealCards() {
   playerSecondCard.setAttribute("class", `card ${removedCardTwo.face}`);
   playerCardImages.playerCardFourEl.appendChild(playerSecondCard);
 
-
   // ADD IN COMPUTER CARDS =================
   // Remove the two cards that are showing to display none
   compCardImages.compCardOneImage.classList.add("display-none");
 
   // Remove card drawn for comp
   removedCardThree = shuffledDeck.pop();
+  removedCardFour = shuffledDeck.pop();
 
   // Make them deal random cards from the deck and switch the images
   const compFirstCard = document.createElement("div");
   // give it styling aka class = what card shows
-  compFirstCard.setAttribute("class", `card ${removedCardThree.face}`);
+  compFirstCard.setAttribute("class", `card ${removedCardThree.face} `);
   compCardImages.compCardThreeEl.appendChild(compFirstCard);
   // create card two and show it on the screen
-  // const compSecondCard = document.createElement('div')
-
+  compSecondCard = document.createElement("div");
+  compSecondCard.setAttribute('class', `card ${removedCardFour.face}`);
+  compSecondCard.style.visibility = 'hidden'
+  compCardImages.compCardThreeEl.appendChild(compSecondCard);
   // Now need to add to the total for player cards
   cardTotals.computer += removedCardThree.value;
+  
+
+  
 
   // if they get 21 off bat winner is losses on scoreboard
   // add in computer wins later on the screen if I have time
 
-    if(cardTotals.player === 21){
-        winnerMessage() //calls the winnerMessage function to check what to spit out
-    } else if (cardTotals.player > 21){
-        winnerMessage()
-    }
-
+  if (cardTotals.player === 21) {
+    winnerMessage(); //calls the winnerMessage function to check what to spit out
+  } else if (cardTotals.player > 21) {
+    winnerMessage();
+  }
 
   render();
 }
@@ -207,109 +221,162 @@ function dealCards() {
 function playerHitCard() {
   // Add stuff to add to total of cards and display another card
   // Make them deal random cards from the deck and switch the images
-  removedCardFour = shuffledDeck.pop();
+  removedCardFive = shuffledDeck.pop();
 
   // Make them deal random cards from the deck and switch the images
   const playerNewCard = document.createElement("div");
   // give it styling aka class = what card shows
-  playerNewCard.setAttribute("class", `card ${removedCardFour.face}`);
+  playerNewCard.setAttribute("class", `card ${removedCardFive.face}`);
   playerCardImages.playerCardThreeEl.appendChild(playerNewCard);
   // create card two and show it on the screen
   // const compSecondCard = document.createElement('div')
 
   // Now need to add to the total for player cards
-  cardTotals.player += removedCardThree.value;
+  cardTotals.player += removedCardFive.value;
 
-  if(cardTotals.player === 21){
-    winnerMessage()
-} else if (cardTotals.player > 21){
-    winnerMessage()
-}
+  if (cardTotals.player === 21) {
+    winnerMessage();
+  } else if (cardTotals.player > 21) {
+    winnerMessage();
+  }
 
   render();
 }
 
-function winnerMessage(){
-    if (cardTotals.player > 21){
-        console.log('BUST!')
-        winner = 'losses'
-    } else if (cardTotals.player > cardTotals.computer || cardTotals.computer > 21){
-        console.log('YOU WIN!')
-        winner = 'wins'
-    } else if (cardTotals.player === cardTotals.computer){
-        console.log('PUSH AKA DRAW')
-        winner = 'draws'
-    } else{
-        winner = 'losses'
-        console.log('Better Luck Next Time')
-    }
-    scores[winner] += 1
-    
-    render()
+function winnerMessage() {
+
+  if (cardTotals.player > 21) {
+    const bustMessage = document.createElement('h3')
+    bustMessage.innerText = 'BUST!'
+    resultMessageEl.appendChild(bustMessage)
+    console.log("BUST!");
+    winner = "losses";
+  } else if (
+    cardTotals.player > cardTotals.computer ||
+    cardTotals.computer > 21
+  ) {
+    const winMessage = document.createElement('h3')
+    winMessage.innerText = 'YOU WIN!!'
+    resultMessageEl.appendChild(winMessage)
+    console.log("YOU WIN!");
+    winner = "wins";
+  } else if (cardTotals.player === cardTotals.computer) {
+    const drawMessage = document.createElement('h3')
+    drawMessage.innerText = 'PUSH aka DRAW'
+    resultMessageEl.appendChild(drawMessage)
+    console.log("PUSH AKA DRAW");
+    winner = "draws";
+  } else {
+    const lossMessage = document.createElement('h3')
+    lossMessage.innerText = 'HOLD THE L, YOU LOST!'
+    resultMessageEl.appendChild(lossMessage)
+    winner = "losses";
+    console.log("Better Luck Next Time");
+  }
+
+  
+
+  scores[winner] += 1;
+
+  // SHOW PLAY AGAIN BUTTON AND TAKE OUT OTHERS
+  playAgainBtn.classList.remove("display-none");
+  playAgainBtn.classList.add("btn");
+
+  betBtn.classList.remove('btn')
+  hitBtn.classList.remove("btn");
+  standBtn.classList.remove("btn");
+
+  betBtn.classList.add('display-none')
+  hitBtn.classList.add("display-none");
+  standBtn.classList.add("display-none");
+  render();
 }
 
 function newRound() {
-    // Get rid of card divs on screen
-  while(compCardImages.compCardThreeEl.hasChildNodes()){
-    compCardImages.compCardThreeEl.removeChild(compCardImages.compCardThreeEl.firstChild);
+  // Get rid of card divs on screen while loop to delete child nodes. while child nodes are present it keeps deleting
+  while (compCardImages.compCardThreeEl.hasChildNodes()) {
+    compCardImages.compCardThreeEl.removeChild(
+      compCardImages.compCardThreeEl.firstChild
+    );
   }
-  while(compCardImages.compCardFourEl.hasChildNodes()){
-    compCardImages.compCardFourEl.removeChild(compCardImages.compCardFourEl.firstChild);
+  while (compCardImages.compCardFourEl.hasChildNodes()) {
+    compCardImages.compCardFourEl.removeChild(
+      compCardImages.compCardFourEl.firstChild
+    );
   }
-  while(playerCardImages.playerCardThreeEl.hasChildNodes()){
-    playerCardImages.playerCardThreeEl.removeChild(playerCardImages.playerCardThreeEl.firstChild);
+  while (playerCardImages.playerCardThreeEl.hasChildNodes()) {
+    playerCardImages.playerCardThreeEl.removeChild(
+      playerCardImages.playerCardThreeEl.firstChild
+    );
   }
-  while(playerCardImages.playerCardFourEl.hasChildNodes()){
-    playerCardImages.playerCardFourEl.removeChild(playerCardImages.playerCardFourEl.firstChild);
+  while (playerCardImages.playerCardFourEl.hasChildNodes()) {
+    playerCardImages.playerCardFourEl.removeChild(
+      playerCardImages.playerCardFourEl.firstChild
+    );
   }
 
-//   Set the total scores back to 0
-cardTotals.player = 0
-cardTotals.computer = 0
+  //   Set the total scores back to 0
+  cardTotals.player = 0;
+  cardTotals.computer = 0;
 
-// NOW NEED TO FIGURE OUT WHERE CALL newRound function
+//   ADDING AND REMOVING BUTTONS
+playAgainBtn.classList.remove("btn");
+  playAgainBtn.classList.add("display-none");
 
-  render()
+  betBtn.classList.remove('display-none')
+  betBtn.classList.add('btn')
+
+//   Adding blank cards back in
+playerCardImages.playerCardOneImage.classList.remove("display-none");
+  playerCardImages.playerCardTwoImage.classList.remove("display-none");
+compCardImages.compCardOneImage.classList.remove("display-none");
+  compCardImages.compCardTwoImage.classList.remove("display-none");
+
+// Remove the win messages
+
+while (resultMessageEl.hasChildNodes()) {
+    resultMessageEl.removeChild(
+      resultMessageEl.firstChild
+    );
+  }
+
+  render();
 }
-
 
 
 function playerStandCard() {
-      if(cardTotals.computer === 21){
-        winnerMessage()
-      } else if (cardTotals.computer > 17){
-        winnerMessage()
-      } else if (cardTotals.computer === 17) { 
-        winnerMessage()
-      }else {
-      removedCardFive = shuffledDeck.pop();
-      // Make them deal random cards from the deck and switch the images
-      const computerNewCard = document.createElement("div");
-      // give it styling aka class = what card shows
-      computerNewCard.setAttribute("class", `card ${removedCardFive.face}`);
-      compCardImages.compCardFourEl.appendChild(computerNewCard);
-      // Now need to add to the total for cards
-      cardTotals.computer += removedCardFive.value;
-    }
+    // Reveal the hidden comp card by adding taking out the display none class
+    compSecondCard.style.visibility = 'visible'
+    cardTotals.computer += removedCardFour.value;
 
-    if(cardTotals.computer > 21){
-        winnerMessage()
-    } else if (cardTotals.computer < 17){
-        playerStandCard()
-    } else {
-        winnerMessage()
-    }
-}
+  if (cardTotals.computer === 21) {
+    winnerMessage();
+  } else if (cardTotals.computer > 17) {
+    // winnerMessage();
+  } else if (cardTotals.computer === 17) {
+    // winnerMessage();
+  } else {
+    removedCardFive = shuffledDeck.pop();
+    // Make them deal random cards from the deck and switch the images
+    const computerNewCard = document.createElement("div");
+    // give it styling aka class = what card shows
+    computerNewCard.setAttribute("class", `card ${removedCardFive.face}`);
+    compCardImages.compCardFourEl.appendChild(computerNewCard);
+    // Now need to add to the total for cards
+    cardTotals.computer += removedCardFive.value;
+  }
 
+  if (cardTotals.computer > 21) {
+    winnerMessage();
+  } else if (cardTotals.computer < 17) {
+    playerStandCard();
+  } else {
+    winnerMessage();
+  }
 
-function compStandCard() {}
+//   Remove the ddefault card by adding display none to make it go away
+  compCardImages.compCardTwoImage.classList.add("display-none");
 
-function checkScores() {}
-
-function randomCard() {
-  // Add stuff to get random cards probably not needed
-  const random = ranks[Math.floor(Math.random() * ranks.length)];
-  console.log(random);
 }
 
 // Function is to Reset the game

@@ -5,16 +5,22 @@
 }
 
 body {
-
+    background-image: url(https://media.istockphoto.com/id/1218355494/vector/poker-table-background-in-green-color.jpg?s=170667a&w=0&k=20&c=kPTTaQdI5VQT-uXn4bWD7yIcCuotlYZK60uWh0EF1Dg=);
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
 }
+
 
 header {
     display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
-    background: green;
-    padding: 20px;
+    /* background: green; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    font-size: large;
+    padding: 30px;
 }
 
 #scoreboard {
@@ -22,6 +28,7 @@ header {
     text-align: center;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
     margin-bottom: 30px;
 }
 
@@ -40,21 +47,35 @@ header {
     padding: 5px;
 }
 
+/* .middle-section {
+    display: flex;
+} */
+
 #deck-cards{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-right: 30px;
+    margin-right: 7%;
 }
 
 #deck-cards img{
     width: 100px;
+    height: 130px;
 }
+
+#result-message {
+    display: inline;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 200px;
+}
+
 
 .cards-section {
     height: 240px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     margin-right: 60px;
 }
@@ -82,6 +103,7 @@ header {
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin-top: -5px;
 }
 
 .btn {
@@ -93,6 +115,15 @@ header {
     margin-bottom: 10px;
     padding: 5px;
     border-radius: 5px;
+    color: white;
+}
+
+#playagain-btn {
+    color: black;
+}
+
+.btn:hover {
+    opacity: 0.5;
 }
 
 #hit-btn {
@@ -112,8 +143,18 @@ header {
     display: flex;
     justify-content: center;
     margin: auto;
+    padding: 30px;
 }
 
 .display-none {
     display: none;
 }
+
+#hide-card {
+    display: hidden;
+}
+
+.win {
+    color: green;
+}
+
