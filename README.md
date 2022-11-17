@@ -7,6 +7,7 @@ GAME LINK ---> https://pnguyen121.github.io/Blackjack-Project/
 
 Visuals: ![image](https://user-images.githubusercontent.com/103158026/202559999-225a77c7-3b04-4035-8b42-446a791f29f6.png)
 
+Tech used: HTML, CSS, & JavaScript
 
 Getting Started:
 
