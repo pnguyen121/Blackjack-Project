@@ -33,5 +33,6 @@ Good Luck!
 Next steps:
 - adding a betting component with dollar values.
 - animate the cards to flow out of the deck rather than just appear 
+- Better mobile optimization
 
 
