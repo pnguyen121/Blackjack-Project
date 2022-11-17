@@ -5,8 +5,9 @@
 }
 
 html {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 
 body {
@@ -14,8 +15,9 @@ body {
     /* background-image: url(https://media.istockphoto.com/photos/black-and-red-poker-chips-with-jack-and-ace-card-on-table-picture-id146782949?b=1&k=20&m=146782949&s=170667a&w=0&h=2ZMwAS52PJe7kVsDJOQEUnAGZBp-G70VKF1UsgJtfZs=); */
     background-repeat: no-repeat, repeat;
     background-size: cover;
+    overflow: hidden;
     height: 100%;
-    width: 100%;
+    /* width: 100%; */
 }
 
 
@@ -199,6 +201,21 @@ header h1 {
 
 
 @media(max-width: 768px) {
+
+    html {
+        width: 100%;
+        height: 100%;
+        background-image: url(../images/blackjackbackground.jpeg);
+        overflow: hidden;
+        background-size: contain;
+        background-position: center center;
+    }
+
+    body {
+        /* background-image: url(../images/blackjackbackground.jpeg); */
+    }
+
+
     header {
         font-size: 20px;
         text-align: center;
@@ -207,10 +224,11 @@ header h1 {
 
     #scoreboard {
         margin: 0;
+        height: 15%;
     }
 
     .middle-section {
-        margin-top: 20px;
+        margin-top: 35px;
     }
 
     #deck-cards {
@@ -220,9 +238,11 @@ header h1 {
     .cards-section {
         display: flex;
         flex-direction: column;
-        height: 300px;
+        height: 260px;
         margin: auto;
-        margin-top: 20px;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        
     }
 
     .cards-section img {
@@ -230,5 +250,18 @@ header h1 {
     }
     .computer-cards {
         margin: auto;
+        height: 10%;
+        width: 90%;
+    }   
+
+    .player-cards {
+        margin: auto;
+        height: 10%;
+        width: 90%;
     }
+
+    .button-section, #bet-btn-div {
+        margin-top: 20px;
+    }
+
 }
