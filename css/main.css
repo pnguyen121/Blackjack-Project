@@ -14,7 +14,8 @@ body {
     /* background-image: url(https://media.istockphoto.com/photos/black-and-red-poker-chips-with-jack-and-ace-card-on-table-picture-id146782949?b=1&k=20&m=146782949&s=170667a&w=0&h=2ZMwAS52PJe7kVsDJOQEUnAGZBp-G70VKF1UsgJtfZs=); */
     background-repeat: no-repeat, repeat;
     background-size: cover;
-    /* height: 90%; */
+    height: 100%;
+    width: 100%;
 }
 
 
@@ -197,38 +198,37 @@ header h1 {
 }
 
 
-@media(max-width: 768px){
+@media(max-width: 768px) {
+    header {
+        font-size: 20px;
+        text-align: center;
+        padding: 25px;
+    }
 
-header {
-    font-size: 20px;
-    text-align: center;
-    padding: 25px;
-}
+    #scoreboard {
+        margin: 0;
+    }
 
-#scoreboard {
-    height: 2%;
-    margin: 0;
-}
+    .middle-section {
+        margin-top: 20px;
+    }
 
-.middle-section {
-    margin-top: 20px;
-}
+    #deck-cards {
+        display: none;
+    }
 
-#deck-cards {
-    display: none;
-   
-}
+    .cards-section {
+        display: flex;
+        flex-direction: column;
+        height: 300px;
+        margin: auto;
+        margin-top: 20px;
+    }
 
-.cards-section {
-    display: flex;
-    flex-direction: column;
-    height: 400px;
-    margin: auto;
-    margin-top: 20px;
-}
-
-.cards-section img {
-    height: 90px;
-}
-
+    .cards-section img {
+        height: 95px;
+    }
+    .computer-cards {
+        margin: auto;
+    }
 }
