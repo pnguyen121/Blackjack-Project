@@ -223,7 +223,7 @@ function playerHitCard() {
   const playerNewCard = document.createElement("div");
   // give it styling aka class = what card shows
   playerNewCard.setAttribute("class", `card ${removedCardFive.face}`);
-  playerCardImages.playerCardThreeEl.appendChild(playerNewCard);
+  playerCardImages.playerCardFourEl.appendChild(playerNewCard);
   // create card two and show it on the screen
   // const compSecondCard = document.createElement('div')
 
@@ -231,10 +231,10 @@ function playerHitCard() {
   cardTotals.player += removedCardFive.value;
 
   if (cardTotals.player === 21) {
-    winnerMessage();
+    playerStandCard()
   } else if (cardTotals.player > 21) {
-    winnerMessage();
-  }
+    playerStandCard()
+  } 
 
   render();
 }
@@ -336,6 +336,9 @@ while (resultMessageEl.hasChildNodes()) {
     );
   }
 
+  // Get new shuffled deck
+  renderNewShuffledDeck()
+
   render();
 }
 
@@ -346,7 +349,7 @@ function playerStandCard() {
     cardTotals.computer += removedCardFour.value;
 
   if (cardTotals.computer === 21) {
-    winnerMessage();
+    // winnerMessage();
   } else if (cardTotals.computer > 17) {
     // winnerMessage();
   } else if (cardTotals.computer === 17) {
