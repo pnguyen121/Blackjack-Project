@@ -30,6 +30,9 @@ Game Mechanics:
 Good Luck!
 
 
+Wire Frame: ![wireframeblackjack](https://user-images.githubusercontent.com/103158026/202731228-d24e47b5-9ecb-4060-aafa-624f3ba3abb3.jpg)
+
+
 Next steps:
 - adding a betting component with dollar values.
 - animate the cards to flow out of the deck rather than just appear 
