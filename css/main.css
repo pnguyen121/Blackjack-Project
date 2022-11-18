@@ -12,12 +12,10 @@ html {
 
 body {
     background-image: url(../images/blackjackbackground.jpeg);
-    /* background-image: url(https://media.istockphoto.com/photos/black-and-red-poker-chips-with-jack-and-ace-card-on-table-picture-id146782949?b=1&k=20&m=146782949&s=170667a&w=0&h=2ZMwAS52PJe7kVsDJOQEUnAGZBp-G70VKF1UsgJtfZs=); */
     background-repeat: no-repeat, repeat;
     background-size: cover;
     overflow: hidden;
     height: 100%;
-    /* width: 100%; */
 }
 
 
@@ -26,7 +24,6 @@ header {
     text-align: center;
     justify-content: center;
     align-items: center;
-    /* background: green; */
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-style: italic;
     font-size: 30px;
@@ -114,7 +111,6 @@ header h1 {
 .cards-section h3 {
     font-size: 15px;
     margin-right: 20px;
-    width: 25%;
 }
 
 .cards-section span {
