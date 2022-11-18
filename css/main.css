@@ -238,6 +238,9 @@ header h1 {
     .cards-section {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
         height: 260px;
         margin: auto;
         margin-top: 25px;
@@ -250,8 +253,9 @@ header h1 {
     }
     .computer-cards {
         margin: auto;
-        height: 10%;
+        /* height: 10%; */
         width: 90%;
+        display: flex;
     }   
 
     .player-cards {
@@ -260,8 +264,17 @@ header h1 {
         width: 90%;
     }
 
-    .button-section, #bet-btn-div {
-        margin-top: 20px;
+    #playercard-3 {
+        width: 100%;
+    }
+
+    #playercard-4 {
+        width: 100%;
+    }
+    
+
+    .button-section{
+        margin-top: 65px;
     }
 
 }
