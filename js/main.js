@@ -176,7 +176,7 @@ function dealCards() {
   const playerSecondCard = document.createElement("div");
   // give it styling whatever index 1 is card and then the face of it will be the class name
   playerSecondCard.setAttribute("class", `card ${removedCardTwo.face}`);
-  playerCardImages.playerCardFourEl.appendChild(playerSecondCard);
+  playerCardImages.playerCardThreeEl.appendChild(playerSecondCard);
 
   // ADD IN COMPUTER CARDS =================
   // Remove the two cards that are showing to display none
