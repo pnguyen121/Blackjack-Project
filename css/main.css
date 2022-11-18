@@ -227,8 +227,18 @@ header h1 {
         height: 15%;
     }
 
+    #scores {
+        font-size: 12px;
+    }
+
     .middle-section {
         margin-top: 35px;
+        margin-bottom: 20px;
+        height: 50px;
+    }
+
+    #result-message {
+        height: 100%;
     }
 
     #deck-cards {
@@ -243,24 +253,24 @@ header h1 {
         text-align: center;
         height: 260px;
         margin: auto;
-        margin-top: 25px;
+        margin-top: 30px;
         margin-bottom: 15px;
         
     }
 
     .cards-section img {
-        height: 95px;
+        height: 80px;
     }
+
+
     .computer-cards {
-        margin: auto;
-        /* height: 10%; */
         width: 90%;
         display: flex;
     }   
 
     .player-cards {
         margin: auto;
-        height: 10%;
+        /* height: 10%; */
         width: 90%;
     }
 
@@ -274,7 +284,17 @@ header h1 {
     
 
     .button-section{
-        margin-top: 65px;
+        margin-top: 10px;
+    }
+
+    #bet-btn-div {
+        padding: 10px;
+        margin-top: -20px;
+    }
+
+    #playagain-btn{
+        padding: 10px;
+        width: 50%;
     }
 
 }
