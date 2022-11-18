@@ -1,296 +1,282 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 html {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 body {
-    background-image: url(../images/blackjackbackground.jpeg);
-    background-repeat: no-repeat, repeat;
-    background-size: cover;
-    overflow: hidden;
-    height: 100%;
+  background-image: url(../images/blackjackbackground.jpeg);
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+  overflow: hidden;
+  height: 100%;
 }
 
-
 header {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-style: italic;
-    font-size: 30px;
-    padding: 30px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-style: italic;
+  font-size: 30px;
+  padding: 30px;
 }
 
 /* ADD COOL TRANSITION for h1 */
 header h1 {
-    transform: translateY(-1200px);
-    animation: heading 2s forwards ease-in;
+  transform: translateY(-1200px);
+  animation: heading 2s forwards ease-in;
 }
 
 @keyframes heading {
-    to{
-        transform: translateY(0px);
-    }
+  to {
+    transform: translateY(0px);
+  }
 }
 
 #scoreboard {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    margin-bottom: 30px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 #scoreboard p {
-    color: white;
+  color: white;
 }
 
 #scores {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 10px;
-    padding: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 10px;
 }
 
 #scores h3 {
-    border-bottom: 1px solid black;
-    padding: 5px;
+  border-bottom: 1px solid black;
+  padding: 5px;
 }
 
 .middle-section {
-    height: 7%;
+  height: 7%;
 }
 
-#deck-cards{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-right: 7%;
-    height: 8%;
+#deck-cards {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 7%;
+  height: 8%;
 }
 
-#deck-cards img{
-    width: 100px;
-    height: 120px;
+#deck-cards img {
+  width: 100px;
+  height: 120px;
 }
 
 #result-message {
-    display: inline;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 200px;
+  display: inline;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 200px;
 }
 
-
 .cards-section {
-    height: 240px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-right: 60px;
+  height: 240px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-right: 60px;
 }
 
 .cards-section img {
-    height: 150px;
+  height: 150px;
 }
 
 .cards-section h3 {
-    font-size: 15px;
-    margin-right: 20px;
+  font-size: 15px;
+  margin-right: 20px;
 }
 
 .cards-section span {
-    color: white;
+  color: white;
 }
 
 .computer-cards {
-    display: flex;
+  display: flex;
 }
 
 .player-cards {
-    display: flex;
+  display: flex;
 }
 
 .button-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-top: -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: -5px;
 }
 
 .btn {
-    width: 25%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 10px;
-    padding: 5px;
-    border-radius: 5px;
-    color: white;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
 }
 
 #playagain-btn {
-    color: black;
-    padding: 10px;
-    margin-bottom: 10px;
+  color: black;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .btn:hover {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 #hit-btn {
-    background: rgb(120, 236, 120);
+  background: rgb(120, 236, 120);
 }
 
 #bet-btn {
-    background: green;
-    transform: translateX(-1200px);
-    animation: bet 1.5s forwards ease-in;
+  background: green;
+  transform: translateX(-1200px);
+  animation: bet 1.5s forwards ease-in;
 }
 /* Add cool transition */
 @keyframes bet {
-    to {
-        transform: translateX(0px);
-    }
+  to {
+    transform: translateX(0px);
+  }
 }
 
 #stand-btn {
-    background: rgb(207, 105, 105);
+  background: rgb(207, 105, 105);
 }
 
 #bet-btn-div {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    padding: 30px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 30px;
 }
 
 .display-none {
-    display: none;
+  display: none;
 }
 
 #hide-card {
-    display: hidden;
+  display: hidden;
 }
 
 .win {
-    color: green;
+  color: green;
 }
 
+@media (max-width: 768px) {
+  html {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/blackjackbackground.jpeg);
+    overflow: hidden;
+    background-size: contain;
+    background-position: center center;
+  }
 
-@media(max-width: 768px) {
+  header {
+    font-size: 20px;
+    text-align: center;
+    padding: 25px;
+  }
 
-    html {
-        width: 100%;
-        height: 100%;
-        background-image: url(../images/blackjackbackground.jpeg);
-        overflow: hidden;
-        background-size: contain;
-        background-position: center center;
-    }
+  #scoreboard {
+    margin: 0;
+    height: 15%;
+  }
 
-    body {
-        /* background-image: url(../images/blackjackbackground.jpeg); */
-    }
+  #scores {
+    font-size: 12px;
+  }
 
+  .middle-section {
+    margin-top: 35px;
+    margin-bottom: 20px;
+    height: 50px;
+  }
 
-    header {
-        font-size: 20px;
-        text-align: center;
-        padding: 25px;
-    }
+  #result-message {
+    height: 100%;
+  }
 
-    #scoreboard {
-        margin: 0;
-        height: 15%;
-    }
+  #deck-cards {
+    display: none;
+  }
 
-    #scores {
-        font-size: 12px;
-    }
+  .cards-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 260px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
 
-    .middle-section {
-        margin-top: 35px;
-        margin-bottom: 20px;
-        height: 50px;
-    }
+  .cards-section img {
+    height: 80px;
+  }
 
-    #result-message {
-        height: 100%;
-    }
+  .computer-cards {
+    width: 90%;
+    display: flex;
+  }
 
-    #deck-cards {
-        display: none;
-    }
+  .player-cards {
+    margin: auto;
+    width: 90%;
+  }
 
-    .cards-section {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        height: 260px;
-        margin: auto;
-        margin-top: 30px;
-        margin-bottom: 15px;
-        
-    }
+  #playercard-3 {
+    width: 100%;
+  }
 
-    .cards-section img {
-        height: 80px;
-    }
+  #playercard-4 {
+    width: 100%;
+  }
 
+  .button-section {
+    margin-top: 10px;
+  }
 
-    .computer-cards {
-        width: 90%;
-        display: flex;
-    }   
+  #bet-btn-div {
+    padding: 10px;
+    margin-top: -20px;
+  }
 
-    .player-cards {
-        margin: auto;
-        /* height: 10%; */
-        width: 90%;
-    }
-
-    #playercard-3 {
-        width: 100%;
-    }
-
-    #playercard-4 {
-        width: 100%;
-    }
-    
-
-    .button-section{
-        margin-top: 10px;
-    }
-
-    #bet-btn-div {
-        padding: 10px;
-        margin-top: -20px;
-    }
-
-    #playagain-btn{
-        padding: 10px;
-        width: 50%;
-    }
-
+  #playagain-btn {
+    padding: 10px;
+    width: 50%;
+  }
 }

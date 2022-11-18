@@ -1,91 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/cardstarter.css">
-    <script defer src="js/main.js" ></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/cardstarter.css" />
+    <script defer src="js/main.js"></script>
     <title>BLACK JACK PROJECT</title>
-</head>
-<body>
+  </head>
+  <body>
     <header id="header">
-        <h1>BLACK JACK</h1>
+      <h1>BLACK JACK</h1>
     </header>
     <section id="scoreboard">
-        <div id="scores">
-            <h3>Wins</h3>
-            <p id="wins-scores"></p>
-            <h3>Draws</h3>
-            <p id="draw-scores"></p>
-            <h3>Losses</h3>
-            <p id="loss-scores"></p>
-        </div>
+      <div id="scores">
+        <h3>Wins</h3>
+        <p id="wins-scores"></p>
+        <h3>Draws</h3>
+        <p id="draw-scores"></p>
+        <h3>Losses</h3>
+        <p id="loss-scores"></p>
+      </div>
     </section>
 
     <div class="middle-section">
-        <div id="deck-cards">
-            <img src="images/Card-Faced-Down.jpeg" alt="">
-            <h3></h3>
-        </div>
-        <div id="result-message">
-    
-        </div>
+      <div id="deck-cards">
+        <img src="images/Card-Faced-Down.jpeg" alt="" />
+        <h3></h3>
+      </div>
+      <div id="result-message"></div>
     </div>
     <section class="cards-section">
-        <h3>Comp Total <span id="comp-total"></span></h3>
-        <div class="computer-cards">
-            <div id="compcard-1">
-                <img id="computercardimage-1" src="https://s3.amazonaws.com/images.penguinmagic.com/images/products/medium/5075a.jpg" alt="">
-            </div>
-            <div id="compcard-2">
-                <img id="computercardimage-2" src="https://s3.amazonaws.com/images.penguinmagic.com/images/products/medium/5075a.jpg" alt="">
-            </div>
-            <div id="compcard-3">
-
-            </div>
-            <div id="compcard-4">
-
-            </div>
-            <div id="compcard-5">
-
-            </div>
+      <h3>Comp Total <span id="comp-total"></span></h3>
+      <div class="computer-cards">
+        <div id="compcard-1">
+          <img
+            id="computercardimage-1"
+            src="https://s3.amazonaws.com/images.penguinmagic.com/images/products/medium/5075a.jpg"
+            alt=""
+          />
         </div>
-        <h3>Player Total <span id="player-total"></span></h3>
-        <div class="player-cards">
-            <div id="playercard-1">
-                <img id='playercardimage-1' src="https://s3.amazonaws.com/images.penguinmagic.com/images/products/medium/5075a.jpg" alt="">
-            </div>
-            <div id="playercard-2">
-                <img id="playercardimage-2" src="https://s3.amazonaws.com/images.penguinmagic.com/images/products/medium/5075a.jpg" alt="">
-            </div>
-            <div id="playercard-3">
-                
-            </div>
-            <div id="playercard-4">
-                
-            </div>
-            <div id="playercard-5">
-                
-            </div>
+        <div id="compcard-2">
+          <img
+            id="computercardimage-2"
+            src="https://s3.amazonaws.com/images.penguinmagic.com/images/products/medium/5075a.jpg"
+            alt=""
+          />
         </div>
+        <div id="compcard-3"></div>
+        <div id="compcard-4"></div>
+        <div id="compcard-5"></div>
+      </div>
+      <h3>Player Total <span id="player-total"></span></h3>
+      <div class="player-cards">
+        <div id="playercard-1">
+          <img
+            id="playercardimage-1"
+            src="https://s3.amazonaws.com/images.penguinmagic.com/images/products/medium/5075a.jpg"
+            alt=""
+          />
+        </div>
+        <div id="playercard-2">
+          <img
+            id="playercardimage-2"
+            src="https://s3.amazonaws.com/images.penguinmagic.com/images/products/medium/5075a.jpg"
+            alt=""
+          />
+        </div>
+        <div id="playercard-3"></div>
+        <div id="playercard-4"></div>
+        <div id="playercard-5"></div>
+      </div>
     </section>
 
     <section class="button-section">
-    <button class="display-none" id="hit-btn">HIT</button>
-    <button class="display-none" id="stand-btn">STAND</button>
+      <button class="display-none" id="hit-btn">HIT</button>
+      <button class="display-none" id="stand-btn">STAND</button>
     </section>
     <div id="bet-btn-div">
-    <button class="btn" id="bet-btn">BET</button>
-    <button class="display-none" id="playagain-btn">PLAY AGAIN</button>
+      <button class="btn" id="bet-btn">BET</button>
+      <button class="display-none" id="playagain-btn">PLAY AGAIN</button>
     </div>
-<!-- Stuff to get the deck to work but its hidden -->
+    <!-- Stuff to get the deck to work but its hidden -->
     <h3 class="display-none">Master Deck</h3>
-    <section id="master-deck-container" class="card-container, display-none" ></section>
+    <section
+      id="master-deck-container"
+      class="card-container, display-none"
+    ></section>
     <button class="display-none">RE-SHUFFLE DECK</button>
     <h3 class="display-none">Shuffled Deck</h3>
-    <section id="shuffled-deck-container" class="card-container, display-none">
-    </section>
-</body>
+    <section
+      id="shuffled-deck-container"
+      class="card-container, display-none"
+    ></section>
+  </body>
 </html>

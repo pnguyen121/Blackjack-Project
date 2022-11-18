@@ -131,8 +131,8 @@ const playerCardImages = {
   playerCardFourEl: document.querySelector("#playercard-4"),
 };
 
-// Grabbing winner result section 
-const resultMessageEl = document.querySelector('#result-message')
+// Grabbing winner result section
+const resultMessageEl = document.querySelector("#result-message");
 
 /*----- event listeners -----*/
 betBtn.addEventListener("click", dealCards);
@@ -141,7 +141,6 @@ standBtn.addEventListener("click", playerStandCard);
 playAgainBtn.addEventListener("click", newRound);
 
 init(); // CALL INIT FUNCTION
-
 
 /*----- functions -----*/
 
@@ -193,14 +192,11 @@ function dealCards() {
   compCardImages.compCardThreeEl.appendChild(compFirstCard);
   // create card two and show it on the screen
   compSecondCard = document.createElement("div");
-  compSecondCard.setAttribute('class', `card ${removedCardFour.face}`);
-  compSecondCard.style.visibility = 'hidden'
+  compSecondCard.setAttribute("class", `card ${removedCardFour.face}`);
+  compSecondCard.style.visibility = "hidden";
   compCardImages.compCardThreeEl.appendChild(compSecondCard);
   // Now need to add to the total for player cards
   cardTotals.computer += removedCardThree.value;
-  
-
-  
 
   // if they get 21 off bat winner is losses on scoreboard
   // add in computer wins later on the screen if I have time
@@ -231,46 +227,43 @@ function playerHitCard() {
   cardTotals.player += removedCardFive.value;
 
   if (cardTotals.player === 21) {
-    playerStandCard()
+    playerStandCard();
   } else if (cardTotals.player > 21) {
-    playerStandCard()
-  } 
+    playerStandCard();
+  }
 
   render();
 }
 
 function winnerMessage() {
-
   if (cardTotals.player > 21) {
-    const bustMessage = document.createElement('h3')
-    bustMessage.innerText = 'BUST!'
-    resultMessageEl.appendChild(bustMessage)
+    const bustMessage = document.createElement("h3");
+    bustMessage.innerText = "BUST!";
+    resultMessageEl.appendChild(bustMessage);
     console.log("BUST!");
     winner = "losses";
   } else if (
     cardTotals.player > cardTotals.computer ||
     cardTotals.computer > 21
   ) {
-    const winMessage = document.createElement('h3')
-    winMessage.innerText = 'YOU WIN!!'
-    resultMessageEl.appendChild(winMessage)
+    const winMessage = document.createElement("h3");
+    winMessage.innerText = "YOU WIN!!";
+    resultMessageEl.appendChild(winMessage);
     console.log("YOU WIN!");
     winner = "wins";
   } else if (cardTotals.player === cardTotals.computer) {
-    const drawMessage = document.createElement('h3')
-    drawMessage.innerText = 'PUSH aka DRAW'
-    resultMessageEl.appendChild(drawMessage)
+    const drawMessage = document.createElement("h3");
+    drawMessage.innerText = "PUSH aka DRAW";
+    resultMessageEl.appendChild(drawMessage);
     console.log("PUSH AKA DRAW");
     winner = "draws";
   } else {
-    const lossMessage = document.createElement('h3')
-    lossMessage.innerText = 'HOLD THE L, YOU LOST!'
-    resultMessageEl.appendChild(lossMessage)
+    const lossMessage = document.createElement("h3");
+    lossMessage.innerText = "HOLD THE L, YOU LOST!";
+    resultMessageEl.appendChild(lossMessage);
     winner = "losses";
     console.log("Better Luck Next Time");
   }
-
-  
 
   scores[winner] += 1;
 
@@ -278,11 +271,11 @@ function winnerMessage() {
   playAgainBtn.classList.remove("display-none");
   playAgainBtn.classList.add("btn");
 
-  betBtn.classList.remove('btn')
+  betBtn.classList.remove("btn");
   hitBtn.classList.remove("btn");
   standBtn.classList.remove("btn");
 
-  betBtn.classList.add('display-none')
+  betBtn.classList.add("display-none");
   hitBtn.classList.add("display-none");
   standBtn.classList.add("display-none");
   render();
@@ -315,38 +308,35 @@ function newRound() {
   cardTotals.player = 0;
   cardTotals.computer = 0;
 
-//   ADDING AND REMOVING BUTTONS
-playAgainBtn.classList.remove("btn");
+  //   ADDING AND REMOVING BUTTONS
+  playAgainBtn.classList.remove("btn");
   playAgainBtn.classList.add("display-none");
 
-  betBtn.classList.remove('display-none')
-  betBtn.classList.add('btn')
+  betBtn.classList.remove("display-none");
+  betBtn.classList.add("btn");
 
-//   Adding blank cards back in
-playerCardImages.playerCardOneImage.classList.remove("display-none");
+  //   Adding blank cards back in
+  playerCardImages.playerCardOneImage.classList.remove("display-none");
   playerCardImages.playerCardTwoImage.classList.remove("display-none");
-compCardImages.compCardOneImage.classList.remove("display-none");
+  compCardImages.compCardOneImage.classList.remove("display-none");
   compCardImages.compCardTwoImage.classList.remove("display-none");
 
-// Remove the win messages
+  // Remove the win messages
 
-while (resultMessageEl.hasChildNodes()) {
-    resultMessageEl.removeChild(
-      resultMessageEl.firstChild
-    );
+  while (resultMessageEl.hasChildNodes()) {
+    resultMessageEl.removeChild(resultMessageEl.firstChild);
   }
 
   // Get new shuffled deck
-  renderNewShuffledDeck()
+  renderNewShuffledDeck();
 
   render();
 }
 
-
 function playerStandCard() {
-    // Reveal the hidden comp card by adding taking out the display none class
-    compSecondCard.style.visibility = 'visible'
-    cardTotals.computer += removedCardFour.value;
+  // Reveal the hidden comp card by adding taking out the display none class
+  compSecondCard.style.visibility = "visible";
+  cardTotals.computer += removedCardFour.value;
 
   if (cardTotals.computer === 21) {
     // winnerMessage();
@@ -373,9 +363,8 @@ function playerStandCard() {
     winnerMessage();
   }
 
-//   Remove the ddefault card by adding display none to make it go away
+  //   Remove the ddefault card by adding display none to make it go away
   compCardImages.compCardTwoImage.classList.add("display-none");
-
 }
 
 // Function is to Reset the game
